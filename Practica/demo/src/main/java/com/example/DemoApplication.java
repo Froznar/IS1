@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
@@ -26,7 +27,22 @@ public class DemoApplication {
 	@ResponseBody
 	public List<Alumno> alumnos(String ordenarPor) {
 		
-		return repositorio.listar();
+		List<Alumno> prueba=new ArrayList<Alumno>();;
+		
+		if(ordenarPor.equals("nombre"))
+		{
+			prueba=repositorio.listar_nombre();
+		}
+		if(ordenarPor.equals("apellido"))
+		{
+			prueba=repositorio.listar_apellido();
+		}
+		if(ordenarPor.equals("promedio"))
+		{
+			prueba=repositorio.listar_promedio();
+		}
+		
+		return prueba;
 	}
 	
 	@RequestMapping("/alumnos_n")
